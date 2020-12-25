@@ -62,7 +62,7 @@ if [ $? -ne 0 ]; then
     cancelrun "下载配置文件出错请重试"
 fi
 
-echo -n -e "\e[33m配置文件config.sh已经下载到$config_path目录下，\n请使用编辑器大概文件按照说明填写cookie和推送key,\n填写完成后按回车继续:\e[0m"
+echo -n -e "\e[33m配置文件config.sh已经下载到$config_path目录下，\n请使用编辑器打开文件，并按照说明填写cookie和推送key,\n填写完成后按回车继续:\e[0m"
 read confrim
 log "3.开始创建容器并执行"
 docker run -dit \
