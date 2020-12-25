@@ -40,7 +40,7 @@ docker_install
 echo -n -e "\e[33m请输入配置文件保存的绝对路径,直接回车为当前目录:\e[0m"
 read jd_path
 JD_PATH=$jd_path
-if [ -z "$jd_path"]; then
+if [ -z "$jd_path" ]; then
     JD_PATH=$SHELL_FOLDER
 fi
 
