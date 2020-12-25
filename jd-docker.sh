@@ -1,5 +1,4 @@
 #!/bin/bash
-
 JD_PATH=""
 SHELL_FOLDER=$(pwd)
 log() {
@@ -15,19 +14,19 @@ cancelrun() {
 
 function docker_install() {
     echo "检查Docker......"
-    docker -v
+    docker -v 
     if [ $? -eq 0 ]; then
         echo "检查到Docker已安装!"
     else
         if [ -r /etc/os-release ]; then
             lsb_dist="$(. /etc/os-release && echo "$ID")"
         fi
-        if [ $lsb_dist != "openwrt" ]; then
+        if [ $lsb_dist == "openwrt" ]; then
             echo "openwrt 环境请自行安装docker"
             exit 1
         else
             echo "安装docker环境..."
-            curl -sSL https://get.daocloud.io/docker | sh
+            curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
             echo "安装docker环境...安装完成!"
         fi
 
@@ -62,7 +61,7 @@ if [ $? -ne 0 ]; then
     cancelrun "下载配置文件出错请重试"
 fi
 
-echo -n -e "\e[33m配置文件config.sh已经下载到$config_path目录下，\n请使用编辑器打开文件，并按照说明填写cookie和推送key,\n填写完成后按回车继续:\e[0m"
+echo -n -e "\e[33m配置文件config.sh已经下载到$config_path目录下，\n请使用编辑器打开文件,并按照说明填写cookie和推送key,\n填写完成后按回车继续:\e[0m"
 read confrim
 log "3.开始创建容器并执行"
 docker run -dit \
