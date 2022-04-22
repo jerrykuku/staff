@@ -1,4 +1,4 @@
-<h3 align="center"><a href="https://casaos.io/"><img src="https://raw.githubusercontent.com/jerrykuku/staff/master/CasaOS-Logo1.png" width="500px"></a></h3>
+<h3 align="center"><a href="https://casaos.io/"><img src="https://raw.githubusercontent.com/jerrykuku/staff/master/CasaOS%20Logo.png" width="500px"></a></h3>
 <h1 align="center">Your Home Cloud OS</h1>
 <h3 align="center">Connect with the community developing self-hosted private cloud, <br>creating self-sovereign, and defining the future of the distributed cloud.<br></h3>
 <p align="center">
