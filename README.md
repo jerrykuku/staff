@@ -13,7 +13,7 @@
 </div>
 <p align="center">
   <br>
-  <a href="https://casaos.io/">Official Website</a> | <a href="http://demo.casaos.io/">Online Demo</a> |  English | <a href="README_ZH.md">简体中文</a> | <a href="README_FR.md">Français</a>
+  <a href="https://casaos.io/">Official Website</a> | <a href="http://demo.casaos.io/">Online Demo</a> |  English | <a href="README_FR.md">Français</a> | <a href="README_ZH.md">简体中文</a>
 </p>
 
 ## Features 
