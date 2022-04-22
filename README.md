@@ -17,7 +17,7 @@
 </p>
 
 ## Features 
-- UI designed for home scenarios - simple, elegant,privacy, and easy-to-use
+- UI designed for home scenarios - simple, elegant, privacy, and easy-to-use
 - Multi-hardware architecture and multi-system support
 - Rich application store with one-click application installation
 - Custom installation of various docker applications
@@ -75,10 +75,10 @@ Please make sure to read the [Contributing Guide](thub.com/IceWhaleTech/CasaOS/b
 Thank you to all the people who already contributed to CasaOS!
 
 ## Maintainers
-[@IceWhaleTech](https://github.com/IceWhaleTech)
-[@Jerry Liu](https://github.com/jerrykuku)
-[@Link Liang](https://github.com/LinkLeong)
-[@John Guan](https://github.com/JohnGuan)
+- [@IceWhaleTech](https://github.com/IceWhaleTech)
+- [@Jerry Liu](https://github.com/jerrykuku)
+- [@Link Liang](https://github.com/LinkLeong)
+- [@John Guan](https://github.com/JohnGuan)
 
 ## Changelog
 Detailed changes for each release are documented in the [release notes](https://github.com/IceWhaleTech/CasaOS/releases).
