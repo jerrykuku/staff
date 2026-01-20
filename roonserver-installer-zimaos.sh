@@ -16,6 +16,9 @@ OK=0
 
 CLEAN_EXIT=0
 
+# Auto-confirm mode (for curl | bash usage)
+AUTO_CONFIRM=0
+
 # for colorization
 ESC_SEQ="\033["
 COL_RESET=$ESC_SEQ"39;49;00m"
@@ -129,8 +132,16 @@ function install {
     fi
 
     function confirm_n {
+        # Auto-confirm mode: default to No (exit)
+        if [ $AUTO_CONFIRM = 1 ]; then
+            CLEAN_EXIT=1
+            echo ""
+            echo "Auto mode: defaulting to No. Exiting."
+            echo ""
+            exit 4
+        fi
         while true; do
-            read -p "$1 [y/N] " yn
+            read -p "$1 [y/N] " yn </dev/tty
             case $yn in
                 [Yy]* ) 
                     break 
@@ -155,8 +166,13 @@ function install {
     }
 
     function confirm {
+        # Auto-confirm mode: default to Yes (continue)
+        if [ $AUTO_CONFIRM = 1 ]; then
+            echo "$1 [Y/n] y (auto-confirmed)"
+            return 0
+        fi
         while true; do
-            read -p "$1 [Y/n] " yn
+            read -p "$1 [Y/n] " yn </dev/tty
             case $yn in
                 "") 
                     break 
@@ -514,8 +530,16 @@ function uninstall {
     fi
 
     function confirm_n {
+        # Auto-confirm mode: default to No (exit)
+        if [ $AUTO_CONFIRM = 1 ]; then
+            CLEAN_EXIT=1
+            echo ""
+            echo "Auto mode: defaulting to No. Exiting."
+            echo ""
+            exit 4
+        fi
         while true; do
-            read -p "$1 [y/N] " yn
+            read -p "$1 [y/N] " yn </dev/tty
             case $yn in
                 [Yy]* ) 
                     break 
@@ -540,8 +564,13 @@ function uninstall {
     }
 
     function confirm {
+        # Auto-confirm mode: default to Yes (continue)
+        if [ $AUTO_CONFIRM = 1 ]; then
+            echo "$1 [Y/n] y (auto-confirmed)"
+            return 0
+        fi
         while true; do
-            read -p "$1 [Y/n] " yn
+            read -p "$1 [Y/n] " yn </dev/tty
             case $yn in
                 "") 
                     break 
@@ -633,7 +662,40 @@ function uninstall {
 }
 
 
-if [ x$1 == xuninstall ]; then
+# Parse command line arguments
+ACTION="install"
+for arg in "$@"; do
+    case $arg in
+        -y|--yes)
+            AUTO_CONFIRM=1
+            ;;
+        uninstall)
+            ACTION="uninstall"
+            ;;
+        install)
+            ACTION="install"
+            ;;
+        -h|--help)
+            echo "Usage: $0 [install|uninstall] [-y|--yes]"
+            echo ""
+            echo "Options:"
+            echo "  install     Install $PACKAGE_NAME (default)"
+            echo "  uninstall   Uninstall $PACKAGE_NAME"
+            echo "  -y, --yes   Auto-confirm all prompts (for non-interactive install)"
+            echo ""
+            echo "Examples:"
+            echo "  # Interactive install"
+            echo "  sudo bash $0"
+            echo ""
+            echo "  # Non-interactive install via curl"
+            echo "  curl -fsSL <url> | sudo bash -s -- -y"
+            echo ""
+            exit 0
+            ;;
+    esac
+done
+
+if [ "$ACTION" == "uninstall" ]; then
     uninstall
 else 
     install
